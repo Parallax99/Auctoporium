@@ -1,0 +1,41 @@
+<div>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div
+      class="col-md-4 border border-rounded"
+      style="margin-top: 50px; padding: 30px"
+    >
+      <div style="text-align: center">
+        <h2>Login</h2>
+      </div>
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        Email:
+        <input type="text" formControlName="email" class="form-control" />
+        <span
+          class="err"
+          *ngIf="
+            loginForm.get('email')?.touched && !loginForm.get('email')?.valid
+          "
+          >Please Enter Email</span
+        >
+
+        <br />
+        Password:
+        <input type="text" formControlName="password" class="form-control" />
+        <span
+          class="err"
+          *ngIf="
+            loginForm.get('password')?.touched &&
+            loginForm.get('password')?.hasError('required')
+          "
+        >
+          Please Enter Password
+        </span>
+        <br />
+        <button class="btn btn-success" type="submit">Login</button>
+      </form>
+      <br />
+      <a routerLink="/signup">Don't have Account SignUp Now! </a>
+    </div>
+  </div>
+</div>
